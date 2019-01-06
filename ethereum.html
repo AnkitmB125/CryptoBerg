@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" 
+
+href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="./css/w3css.css">
+  <link rel="stylesheet" type="text/css" href="./css/custom.css">
+
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'> 
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/prettyPhoto.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+
+<style>
+  
+</style>
+</head>
+<body>
+
+  <header id="header">
+    <nav class="navbar navbar-inverse" role="banner" style="position: relative; top: 0; width:100%;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./"><font color="red"><b>Crypto</b></font>Berg</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li><a href="./">HOME</a></li>
+            <li><a href="allMarkets.html">All Markets</a></li>
+            <!-- <li><a data-toggle="modal" data-target="#myModal">REGISTER</a></li> -->
+            <li><a href="bitcoin.html">Bitcoin Markets</a></li>
+            <li class="active"><a href="ethereum.html">Ethereum Markets</a></li>
+             <li><a href="./#content">FAQ</a></li>
+            <li><a href="./#conatcat-info">CONTACT</a></li>
+          </ul>
+        </div>
+      </div> 
+    </nav> 
+  </header> 
+   <div style="background-color: #E30000; padding-top: 25px; padding-bottom: 45px; ">
+    <div class="col-md-4" style="font-size: 30px;"><span style="font-weight: bold;"><font color="white" >Ethereum Market</font></span></div>
+   </div>
+ 
+  <div class="col-md-7"></div>
+  <div class="col col-md-4" style="margin-left: 35px">
+  <input id="myInput" class="form-control form-control-lg" type="text" placeholder="Search.." style="margin: 15px;"><span style="background-color: red; color: white; float: right;">Data for some coins is not available. Kindly cooperate</span>
+</div>
+
+<div style="overflow-x: : auto; padding: 10px;">
+    <table id="myTable" class="w3-table w3-striped w3-hoverable w3-bordered" class="tablesorter">  
+        <thead><tr><th>Rank</th><th>Name</th><th>Price</th><th>24hr %change</th><th>Market Cap</th><th>24hr Volume</th><th>Circulating Supply</th><th>Last Updated</th></tr>
+        </thead>
+        <tbody  id="tableBody">
+          </tbody>
+      </table>  
+  </div>
+      </div>
+    </div>
+    
+
+
+<script>
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myObj = JSON.parse(this.responseText);
+        // document.getElementById("table").innerHTML = myObj.result.length;
+        var txt = "";
+        for(var i=0;i<myObj.length;i++){
+
+                           var time = timeConverter(myObj[i].last_updated);
+
+                          if(myObj[i].percent_change_24h >=0){
+                            percent = "<font color='green'>"+myObj[i].percent_change_24h+"%&nbsp<i class='fa fa-arrow-up'></i></font>";
+                            link = "<a style='color: green;' href='eth_market.php?coin="+myObj[i].symbol+"'>"+myObj[i].name+" ("+myObj[i].symbol+")</a>";
+                           }
+                           else
+                           {
+                            percent = "<font color='red'>"+myObj[i].percent_change_24h+"%&nbsp<i class='fa fa-arrow-down'></font>";
+                            link = "<a style='color: red;' href='eth_market.php?coin="+myObj[i].symbol+"'>"+myObj[i].name+" ("+myObj[i].symbol+")</a>"
+                           }
+                            txt += "<tr><td>"+myObj[i].rank+"</td><td>"+link+"</td><td>"+myObj[i].price_eth+"</td><td>"+percent+"</td><td>"+myObj[i].market_cap_eth+"</td><td>"+myObj[i]["24h_volume_eth"]+"</td><td>"+myObj[i].max_supply+" "+myObj[i].symbol+"</td><td>"+time+"</td></tr>";
+                        
+        }
+        // txt=txt+"";
+        if(txt != ""){
+                        $("#table").append(txt).removeClass("hidden");
+                    }
+                    document.getElementById("tableBody").innerHTML = txt;
+    }
+};
+xmlhttp.open("GET", "https://api.coinmarketcap.com/v1/ticker/?convert=eth&limit=500", true);
+xmlhttp.send();
+
+</script>
+<script type="text/javascript">
+  function timeConverter(UNIX_timestamp){
+  var a = new Date(UNIX_timestamp * 1000);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+  return time;
+}
+</script>
+<!-- <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script> -->
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
+ 
+
+    <!-- <script src="js/d
+      atatables/datatables.js"></script> -->
+    
+  
+<!-- <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+
+
+        <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tableBody tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<footer id="footer" class="midnight-blue">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-8">
+        &copy; 2018 <a href="./">Crypto</font>Berg. This is an independent website created by Ankit Bhadage.
+        </div>
+        
+        <div class="col-sm-4">
+          <ul class="pull-right">
+            <li><a href="mailto:abhadage@ecellmnnit.in"><i class="fa fa-envelope"></i> &nbsp;abhadage@ecellmnnit.in</li></a>
+            <li><a target="_blank" href="http://www.facebook.com/AnkitmB125"><i class="fa fa-facebook"></i> &nbsp;Ankit Bhadage</li></a>
+            <li><a href="#content">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> 
+
+<script>
+function sortTable(table, col, reverse) {
+    var tb = table.tBodies[0], // use `<tbody>` to ignore `<thead>` and `<tfoot>` rows
+        tr = Array.prototype.slice.call(tb.rows, 0), // put rows into array
+        i;
+    reverse = -((+reverse) || -1);
+    
+    tr = tr.sort(function (a, b) { // sort rows
+        
+        
+        if(!isNaN(a.cells[col].textContent) && !isNaN(b.cells[col].textContent))
+        return reverse * ((+a.cells[col].textContent) - (+b.cells[col].textContent))
+       return reverse // `-1 *` if want opposite order
+            * (a.cells[col].textContent.trim() // using `.textContent.trim()` for test
+                .localeCompare(b.cells[col].textContent.trim())
+               );
+    });
+    for(i = 0; i < tr.length; ++i) tb.appendChild(tr[i]); // append each row in order
+}
+
+function makeSortable(table) {
+    var th = table.tHead, i;
+    th && (th = th.rows[0]) && (th = th.cells);
+    if (th) i = th.length;
+    else return; // if no `<thead>` then do nothing
+    while (--i >= 0) (function (i) {
+        var dir = 1;
+        th[i].addEventListener('click', function () {sortTable(table, i, (dir = 1 - dir))});
+    }(i));
+}
+
+function makeAllSortable(parent) {
+    parent = parent || document.body;
+    var t = parent.getElementsByTagName('table'), i = t.length;
+    while (--i >= 0) makeSortable(t[i]);
+}
+
+window.onload = function () {makeAllSortable();};
+</script>
+</body>
+</html>
+

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style> -->
+<!-- <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script> -->
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="./css/w3css.css">
+	<link rel="stylesheet" type="text/css" href="./css/custom.css">
+
+	 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'> 
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/prettyPhoto.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+
+<style>
+	
+</style>
+</head>
+<body>
+
+  <header id="header">
+    <nav class="navbar navbar-inverse" role="banner" style="position: relative; top: 0; width:100%;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./"><font color="red"><b>Crypto</b></font>Berg</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li><a href="./">HOME</a></li>
+            <li class="active"><a href="allMarkets.html">All Markets</a></li>
+            <!-- <li><a data-toggle="modal" data-target="#myModal">REGISTER</a></li> -->
+            <li><a href="bitcoin.html">Bitcoin Markets</a></li>
+            <li><a href="ethereum.html">Ethereum Markets</a></li>
+             <li><a href="./#content">FAQ</a></li>
+            <li><a href="./#conatcat-info">CONTACT</a></li>
+          </ul>
+        </div>
+      </div> 
+    </nav> 
+  </header> 
+   <div style="background-color: #E30000; padding-top: 25px; padding-bottom: 45px; ">
+   	<div class="col-md-4" style="font-size: 30px;"><span style="font-weight: bold;"><font color="white" >All Markets</font></span></div>
+   </div>
+ 
+  <div class="col-md-6"></div>
+  <div class="col col-md-2"><select id="myselect" onchange="change_myselect(this.value)" class="form-control" style="margin: 15px; width: 200px;">
+<option value="usd">United Stated of America(USD)</option>
+<option value="inr">India(INR)</option>
+<option value="eur">Europe(EUR)</option>
+<option value="aud">Australia(AUD)</option>
+<option value="brl">Brazil(BRL)</option>
+<option value="cad">Canada(CAD)</option>
+<option value="chf">Swiss Franc(CHF)</option>
+<option value="clp">Chile(CLP)</option>
+<option value="cny">China(CNY)</option>
+<option value="czk">Czech Republic(CZK)</option>
+<option value="dkk">Denmark(DKK)</option>
+<option value="gbp">United Kingdom(GBP)</option>
+<option value="hkd">Hong Kong(HKD)</option>
+<option value="huf">Hungary(HUF)</option>
+<option value="idr">Indonesia(IDR)</option>
+<option value="ils">Israel(ILS)</option>
+<option value="jpy">Japan(JPY)</option>
+<option value="krw">South Korea(KRW)</option>
+<option value="mxn">Mexico(MXN)</option>
+<option value="myr">Malaysia(MYR)</option>
+<option value="nok">Norway(NOR)</option>
+<option value="nzd">New Zealand(NZD)</option>
+<option value="php">Philippine(PHP)</option>
+<option value="pkr">Pakistan(PKR)</option>
+<option value="pln">Poland(PLN)</option>
+<option value="rub">Russia(RUB)</option>
+<option value="sek">Sweden(SEK)</option>
+<option value="sgd">Singapore(SGD)</option>
+<option value="thb">Thailand(THB)</option>
+<option value="try">Turkey(TRY)</option>
+<option value="twd">Taiwan(TWD)</option>
+<option value="zar">South Africa(ZAR)</option>
+</select>
+
+</div>
+<div class="col col-md-3">
+<input id="myInput" class="form-control form-control-lg" type="text" placeholder="Search.." style="margin: 15px; width: 350px;"><span style="background-color: red; color: white; float: right;">Data for some coins is not available. Kindly cooperate</span>
+</div>
+<div class="col col-md-1"></div>
+<div style="overflow-x: : auto; padding: 10px;">
+		<table id="myTable" class="w3-table w3-striped w3-hoverable w3-bordered" class="tablesorter">  
+        <thead><tr><th>Rank</th><th>Name</th><th>Price</th><th>24hr %change</th><th>Market Cap</th><th>24hr Volume</th><th>Circulating Supply</th><th>Last Updated</th></tr>
+        </thead>
+        <tbody  id="tableBody">
+        	</tbody>
+      </table>  
+  </div>
+			</div>
+		</div>
+		
+
+
+<script>
+function change_myselect(sel){
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myObj = JSON.parse(this.responseText);
+        // document.getElementById("table").innerHTML = myObj.result.length;
+        var txt = "";
+        for(var i=0;i<myObj.length;i++){
+                       		 var time = timeConverter(myObj[i].last_updated);
+                           if(myObj[i].percent_change_24h >=0){
+                            percent = "<font color='green'>"+myObj[i].percent_change_24h+"%&nbsp<i class='fa fa-arrow-up'></i></font>";
+                            link = "<a style='color: green;' href='usd_market.php?coin="+myObj[i].symbol+"'>"+myObj[i].name+" ("+myObj[i].symbol+")</a>";
+                           }
+                           else
+                           {
+                            percent = "<font color='red'>"+myObj[i].percent_change_24h+"%&nbsp<i class='fa fa-arrow-down'></font>";
+                            link = "<a style='color: red;' href='usd_market.php?coin="+myObj[i].symbol+"'>"+myObj[i].name+" ("+myObj[i].symbol+")</a>"
+                           }
+                           if(sel == 'usd'){
+                            price = myObj[i].price_usd;
+                            marcap = myObj[i].market_cap_usd;
+                            vol24 = myObj[i]["24h_volume_usd"];
+                           }
+                           else if(sel == 'inr'){
+                            price = myObj[i].price_inr;
+                            marcap = myObj[i].market_cap_inr;
+                            vol24 = myObj[i]["24h_volume_inr"];
+                           }
+                           else if(sel == 'eur'){
+                            price = myObj[i].price_eur;
+                            marcap = myObj[i].market_cap_eur;
+                            vol24 = myObj[i]["24h_volume_eur"];
+                           }
+                           else if(sel == 'aud'){
+                            price = myObj[i].price_aud;
+                            marcap = myObj[i].market_cap_aud;
+                            vol24 = myObj[i]["24h_volume_aud"];
+                           }
+                           else if(sel == 'brl'){
+                            price = myObj[i].price_brl;
+                            marcap = myObj[i].market_cap_brl;
+                            vol24 = myObj[i]["24h_volume_brl"];
+                           }
+                           else if(sel == 'cad'){
+                            price = myObj[i].price_cad;
+                            marcap = myObj[i].market_cap_cad;
+                            vol24 = myObj[i]["24h_volume_cad"];
+                           }
+                           else if(sel == 'chf'){
+                            price = myObj[i].price_chf;
+                            marcap = myObj[i].market_cap_chf;
+                            vol24 = myObj[i]["24h_volume_chf"];
+                           }
+                           else if(sel == 'clp'){
+                            price = myObj[i].price_clp;
+                            marcap = myObj[i].market_cap_clp;
+                            vol24 = myObj[i]["24h_volume_clp"];
+                           }
+                           else if(sel == 'cny'){
+                            price = myObj[i].price_cny;
+                            marcap = myObj[i].market_cap_cny;
+                            vol24 = myObj[i]["24h_volume_cny"];
+                           }
+                           else if(sel == 'czk'){
+                            price = myObj[i].price_czk;
+                            marcap = myObj[i].market_cap_czk;
+                            vol24 = myObj[i]["24h_volume_czk"];
+                           }
+                           else if(sel == 'dkk'){
+                            price = myObj[i].price_dkk;
+                            marcap = myObj[i].market_cap_dkk;
+                            vol24 = myObj[i]["24h_volume_dkk"];
+                           }
+                           else if(sel == 'gbp'){
+                            price = myObj[i].price_gbp;
+                            marcap = myObj[i].market_cap_gbp;
+                            vol24 = myObj[i]["24h_volume_gbp"];
+                           }
+                           else if(sel == 'hkd'){
+                            price = myObj[i].price_hkd;
+                            marcap = myObj[i].market_cap_hkd;
+                            vol24 = myObj[i]["24h_volume_hkd"];
+                           }
+                           else if(sel == 'huf'){
+                            price = myObj[i].price_huf;
+                            marcap = myObj[i].market_cap_huf;
+                            vol24 = myObj[i]["24h_volume_huf"];
+                           }
+                           else if(sel == 'idr'){
+                            price = myObj[i].price_idr;
+                            marcap = myObj[i].market_cap_idr;
+                            vol24 = myObj[i]["24h_volume_idr"];
+                           }
+                           else if(sel == 'ils'){
+                            price = myObj[i].price_ils;
+                            marcap = myObj[i].market_cap_ils;
+                            vol24 = myObj[i]["24h_volume_ils"];
+                           }
+                           else if(sel == 'jpy'){
+                            price = myObj[i].price_jpy;
+                            marcap = myObj[i].market_cap_jpy;
+                            vol24 = myObj[i]["24h_volume_jpy"];
+                           }
+                           else if(sel == 'krw'){
+                            price = myObj[i].price_krw;
+                            marcap = myObj[i].market_cap_krw;
+                            vol24 = myObj[i]["24h_volume_krw"];
+                           }
+                           else if(sel == 'mxn'){
+                            price = myObj[i].price_mxn;
+                            marcap = myObj[i].market_cap_mxn;
+                            vol24 = myObj[i]["24h_volume_mxn"];
+                           }
+                           else if(sel == 'myr'){
+                            price = myObj[i].price_myr;
+                            marcap = myObj[i].market_cap_myr;
+                            vol24 = myObj[i]["24h_volume_myr"];
+                           }
+                           else if(sel == 'nok'){
+                            price = myObj[i].price_nok;
+                            marcap = myObj[i].market_cap_nok;
+                            vol24 = myObj[i]["24h_volume_nok"];
+                           }
+                           else if(sel == 'nzd'){
+                            price = myObj[i].price_nzd;
+                            marcap = myObj[i].market_cap_nzd;
+                            vol24 = myObj[i]["24h_volume_nzd"];
+                           }
+                           else if(sel == 'php'){
+                            price = myObj[i].price_php;
+                            marcap = myObj[i].market_cap_php;
+                            vol24 = myObj[i]["24h_volume_php"];
+                           }
+                           else if(sel == 'pkr'){
+                            price = myObj[i].price_pkr;
+                            marcap = myObj[i].market_cap_pkr;
+                            vol24 = myObj[i]["24h_volume_pkr"];
+                           }
+                           else if(sel == 'pln'){
+                            price = myObj[i].price_pln;
+                            marcap = myObj[i].market_cap_pln;
+                            vol24 = myObj[i]["24h_volume_pln"];
+                           }
+                           else if(sel == 'rub'){
+                            price = myObj[i].price_rub;
+                            marcap = myObj[i].market_cap_rub;
+                            vol24 = myObj[i]["24h_volume_rub"];
+                           }
+                           else if(sel == 'sek'){
+                            price = myObj[i].price_sek;
+                            marcap = myObj[i].market_cap_sek;
+                            vol24 = myObj[i]["24h_volume_sek"];
+                           }
+                           else if(sel == 'sgd'){
+                            price = myObj[i].price_sgd;
+                            marcap = myObj[i].market_cap_sgd;
+                            vol24 = myObj[i]["24h_volume_sgd"];
+                           }
+                           else if(sel == 'thb'){
+                            price = myObj[i].price_thb;
+                            marcap = myObj[i].market_cap_thb;
+                            vol24 = myObj[i]["24h_volume_thb"];
+                           }
+                           else if(sel == 'try'){
+                            price = myObj[i].price_try;
+                            marcap = myObj[i].market_cap_try;
+                            vol24 = myObj[i]["24h_volume_try"];
+                           }
+                           else if(sel == 'twd'){
+                            price = myObj[i].price_twd;
+                            marcap = myObj[i].market_cap_twd;
+                            vol24 = myObj[i]["24h_volume_twd"];
+                           }
+                           else if(sel == 'rub'){
+                            price = myObj[i].price_rub;
+                            marcap = myObj[i].market_cap_rub;
+                            vol24 = myObj[i]["24h_volume_rub"];
+                           }
+
+
+
+                            txt += "<tr><td>"+myObj[i].rank+"</td><td>"+link+"</td><td>"+price+"</td><td>"+percent+"</td><td>"+marcap+"</td><td>"+vol24+"</td><td>"+myObj[i].max_supply+" "+myObj[i].symbol+"</td><td>"+time+"</td></tr>";
+                        
+        }
+        // // txt=txt+"";
+        // if(txt != ""){
+        //                 $("#table").append(txt).removeClass("hidden");
+        //             }
+                    document.getElementById("tableBody").innerHTML = txt;
+    }
+};
+url = "https://api.coinmarketcap.com/v1/ticker/?convert="+sel+"&limit=500";
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+}
+
+window.onload = change_myselect("usd");
+</script>
+<script type="text/javascript">
+  function timeConverter(UNIX_timestamp){
+  var a = new Date(UNIX_timestamp * 1000);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+  return time;
+}
+</script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script> -->
+		<!-- <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script> -->
+ 
+
+		<!-- <script src="js/d
+			atatables/datatables.js"></script> -->
+		
+	
+<!-- <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+
+
+        <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tableBody tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<footer id="footer" class="midnight-blue">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-8">
+        &copy; 2018 <a href="./">Crypto</font>Berg. This is an independent website created by Ankit Bhadage.
+        </div>
+        
+        <div class="col-sm-4">
+          <ul class="pull-right">
+            <li><a href="mailto:abhadage@ecellmnnit.in"><i class="fa fa-envelope"></i> &nbsp;abhadage@ecellmnnit.in</li></a>
+            <li><a target="_blank" href="http://www.facebook.com/AnkitmB125"><i class="fa fa-facebook"></i> &nbsp;Ankit Bhadage</li></a>
+            <li><a href="#content">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> 
+
+<script>
+function sortTable(table, col, reverse) {
+    var tb = table.tBodies[0], // use `<tbody>` to ignore `<thead>` and `<tfoot>` rows
+        tr = Array.prototype.slice.call(tb.rows, 0), // put rows into array
+        i;
+    reverse = -((+reverse) || -1);
+    
+    tr = tr.sort(function (a, b) { // sort rows
+        
+        
+        if(!isNaN(a.cells[col].textContent) && !isNaN(b.cells[col].textContent))
+        return reverse * ((+a.cells[col].textContent) - (+b.cells[col].textContent))
+       return reverse // `-1 *` if want opposite order
+            * (a.cells[col].textContent.trim() // using `.textContent.trim()` for test
+                .localeCompare(b.cells[col].textContent.trim())
+               );
+    });
+    for(i = 0; i < tr.length; ++i) tb.appendChild(tr[i]); // append each row in order
+}
+
+function makeSortable(table) {
+    var th = table.tHead, i;
+    th && (th = th.rows[0]) && (th = th.cells);
+    if (th) i = th.length;
+    else return; // if no `<thead>` then do nothing
+    while (--i >= 0) (function (i) {
+        var dir = 1;
+        th[i].addEventListener('click', function () {sortTable(table, i, (dir = 1 - dir))});
+    }(i));
+}
+
+function makeAllSortable(parent) {
+    parent = parent || document.body;
+    var t = parent.getElementsByTagName('table'), i = t.length;
+    while (--i >= 0) makeSortable(t[i]);
+}
+
+window.onload = function () {makeAllSortable();};
+</script>
+</body>
+</html>
+
