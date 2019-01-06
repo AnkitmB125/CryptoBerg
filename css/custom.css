@@ -1,0 +1,35 @@
+body{
+  background-color: #f2f2f2;
+}
+.dosis{
+	font-family: 'Dosis', sans-serif;
+}
+.middle{
+   position: absolute;
+   width: 100%;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+@media only screen and (min-width: 1349px) {
+ 
+	#wrapper{
+		margin:0px auto;
+		width:1349px;
+		height:auto;
+	}
+}
+h1,.Raleway,button,.mainLoginInput::-webkit-input-placeholder,.mainLoginInput:-moz-placeholder,
+.notice,{
+  font-family: 'Raleway', sans-serif;
+}
+#searchbtn{
+  background-color:grey;
+  color:#fff;
+}
+table>caption{
+  font-size: 20px;
+}
+
+
+
